@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
+/*   Contact.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/02 14:48:22 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/02 17:51:32 by aurlic           ###   ########.fr       */
+/*   Created: 2024/05/02 17:52:03 by aurlic            #+#    #+#             */
+/*   Updated: 2024/05/02 17:55:13 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_CLASS_HPP
-# define PHONEBOOK_CLASS_HPP
+#ifndef CONTACT_CLASS_HPP
+# define CONTACT_CLASS_HPP
 
-# include <iostream>
-
-class PhoneBook
+class Contact
 {
 	private:
 		
-
 	public:
-		PhoneBook();
-		~PhoneBook();
-
-		void	launch(void) const;
-		
+		Contact();
+		~Contact();
 };
 
 #endif

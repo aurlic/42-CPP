@@ -45,10 +45,6 @@ ITALIC		:=	\033[3m
 # **************************************************************************** #
 
 # INCLUDES #
-define	INC	:=
-				$(INCLD_DIR)/
-				$(LIBFT_DIR)/$(INCLD_DIR)/
-endef
 INCLUDES	:=	$(strip $(INC))
 INCLD_FLAG	:=	$(addprefix -I , $(INCLUDES))
 

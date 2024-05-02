@@ -45,15 +45,13 @@ ITALIC		:=	\033[3m
 # **************************************************************************** #
 
 # INCLUDES #
-define	INC	:=
-				$(INCLD_DIR)/
-				$(LIBFT_DIR)/$(INCLD_DIR)/
-endef
-INCLUDES	:=	$(strip $(INC))
+INCLUDES	:=	PhoneBook.class.hpp \
+
 INCLD_FLAG	:=	$(addprefix -I , $(INCLUDES))
 
 # SOURCES #
-SRC			:=	megaphone.cpp \
+SRC			:=	main.cpp \
+				PhoneBook.class.cpp \
 
 OBJS 		:=	$(patsubst %.cpp,$(OBJS_DIR)/%.o,$(SRC))
 DEPS		:=	$(patsubst %.cpp,$(OBJS_DIR)/%.d,$(SRC))
