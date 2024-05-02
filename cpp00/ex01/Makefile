@@ -2,7 +2,7 @@
 #                                    PROGRAM                                   #
 # **************************************************************************** #
 
-NAME		:=	megaphone
+NAME		:=	phonebook
 
 # **************************************************************************** #
 #                                     UTILS                                    #
@@ -66,25 +66,25 @@ DEPS		:=	$(patsubst %.cpp,$(OBJS_DIR)/%.d,$(SRC))
 all:	$(NAME)
 
 $(NAME): $(OBJS)
-	@printf "\r\033[K[megaphone 📣] \033[4;32mBuilding megaphone: $<\033[0m"
+	@printf "\r\033[K[phonebook 📒] \033[4;32mBuilding phonebook: $<\033[0m"
 	@$(CC) $(OBJS) -o $(NAME)
-	@printf "\r\033[K[megaphone 📣] \033[0;32mDone!\033[0m\n"
+	@printf "\r\033[K[phonebook 📒] \033[0;32mDone!\033[0m\n"
 
 -include $(DEPS)
 $(OBJS_DIR)/%.o: ./%.cpp
-	@printf "$(NEW)[megaphone 📣] $(U_GREEN)Building:$(DEFAULT) $<"
+	@printf "$(NEW)[phonebook 📒] $(U_GREEN)Building:$(DEFAULT) $<"
 	@mkdir -p $(OBJS_DIR)
 	@$(CC) $(DEP_FLAGS) $(CFLAGS) $(INCLD_FLAG) -c $< -o $@
 
 clean:
-	@printf "[megaphone 📣] $(RED)Cleaning objects...$(DEFAULT)\n"
+	@printf "[phonebook 📒] $(RED)Cleaning objects...$(DEFAULT)\n"
 	@$(RM) $(OBJS_DIR)
-	@printf "[megaphone 📣] $(RED)Cleaned objects!$(DEFAULT)\n"
+	@printf "[phonebook 📒] $(RED)Cleaned objects!$(DEFAULT)\n"
 
 fclean: clean
-	@printf "[megaphone 📣] \033[0;31mDeleting megaphone executable\033[0m\n"
+	@printf "[phonebook 📒] \033[0;31mDeleting phonebook executable\033[0m\n"
 	@$(RM) $(NAME)
-	@printf "[megaphone 📣] \033[1;32mDone\033[0m\n\n"
+	@printf "[phonebook 📒] \033[1;32mDone\033[0m\n\n"
 
 re: fclean all
 

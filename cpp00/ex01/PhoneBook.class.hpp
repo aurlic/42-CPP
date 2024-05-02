@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/02 14:46:33 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/02 14:46:34 by aurlic           ###   ########.fr       */
+/*   Created: 2024/05/02 14:48:22 by aurlic            #+#    #+#             */
+/*   Updated: 2024/05/02 15:06:12 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef PHONEBOOK_CLASS_HPP
+# define PHONEBOOK_CLASS_HPP
 
-int	main(int ac, char **av)
+
+class PhoneBook
 {
-	if (ac == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	else
-	{
-		for (int i = 1; av[i]; i++)
-		{
-			for (int j = 0; av[i][j]; j++)
-				std::cout << (char) toupper(av[i][j]);
-			if (i < ac - 1)
-				std::cout << " ";
-		}
-	}
-	std::cout << std::endl;
-	return (0);
-}
+	private:
+
+
+	public:
+		PhoneBook();
+		~PhoneBook();
+
+		void	launch(void) const;
+};
+
+#endif
