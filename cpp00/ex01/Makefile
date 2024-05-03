@@ -9,7 +9,7 @@ NAME		:=	phonebook
 # **************************************************************************** #
 
 CC			:=	c++
-CFLAGS		:=	-Wall -Wextra -Werror -std=c++98
+CFLAGS		:=	-g3 -Wall -Wextra -Werror -std=c++98
 DEP_FLAGS	:=	-MMD -MP
 RM			:=	rm -rf
 
@@ -46,12 +46,15 @@ ITALIC		:=	\033[3m
 
 # INCLUDES #
 INCLUDES	:=	PhoneBook.class.hpp \
+				Contact.class.hpp \
 
 INCLD_FLAG	:=	$(addprefix -I , $(INCLUDES))
 
 # SOURCES #
 SRC			:=	main.cpp \
 				PhoneBook.class.cpp \
+				Contact.class.cpp \
+
 
 OBJS 		:=	$(patsubst %.cpp,$(OBJS_DIR)/%.o,$(SRC))
 DEPS		:=	$(patsubst %.cpp,$(OBJS_DIR)/%.d,$(SRC))
