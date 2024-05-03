@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:47:13 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/03 15:25:40 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/03 16:44:22 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	PhoneBook::launch(void) const
 	std::cout << "|                 ----                 |" << std::endl;
 	std::cout << "|   Type \x1b[1;33mEXIT\x1b[0m to leave your phonebook  |" << std::endl;
 	std::cout << "*______________________________________*" << std::endl << std::endl;
+	std::cout << "                 ~~~~~~                 " << std::endl;
 }
 
 void	PhoneBook::addContact(void)
@@ -45,13 +46,25 @@ void	PhoneBook::addContact(void)
 
 void	PhoneBook::printContacts(void) const
 {
+	std::cout << std::endl;
+	std::cout << "*-------------------------------------------*" << std::endl;
 	std::cout << "|     INDEX|  1ST NAME| LAST NAME|  NICKNAME|" << std::endl;
 	for (int i = 0; i < 8; i++)
-		this->_contacts[i].display(i);
+		this->_contacts[i].displayBook(i);
+	std::cout << "*-------------------------------------------*" << std::endl;
 }
 
-void	PhoneBook::search(std::string str) const
+void	PhoneBook::search() const
 {
+	int	i = -1;
+
 	this->printContacts();
-	(void)str;
+	std::cout << "Please select index of the contact to display : ";
+	std::cin >> i;
+	while (i < 0 || i > 8)
+	{
+		std::cout << "Invalid index, please retry :";
+		std::cin >> i;
+	}
+	this->_contacts[i].displayChoice(i);
 }

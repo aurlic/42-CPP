@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:52:03 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/03 15:22:38 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/03 16:39:15 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ class Contact
 		~Contact();
 		
 		void	init(void);
-		void	display(int i) const;
+		void	displayBook(int i) const;
+		void	displayChoice(int i) const;
 		void	setIndex(int i);
 };
 

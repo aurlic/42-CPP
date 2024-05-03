@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:48:22 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/03 15:25:05 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/03 16:44:15 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class PhoneBook
 		void	launch(void) const;
 		void	addContact(void);
 		void	printContacts(void) const;
-		void	search(std::string str) const;
+		void	search() const;
 };
 
 #endif

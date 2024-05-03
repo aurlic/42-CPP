@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:46:22 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/03 15:24:57 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/03 16:43:45 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(void)
 		if (input.compare("ADD") == 0)
 			rep.addContact();
 		else if (input.compare("SEARCH") == 0)
-			rep.search(input);
+			rep.search();
 		std::cin >> input;
 	}
 	return (0);
