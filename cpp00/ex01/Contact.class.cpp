@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:54:33 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/03 16:46:40 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/06 15:49:59 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,38 @@ Contact::~Contact()
 {
 }
 
+bool	Contact::_alnumStr(std::string str) const
+{
+	for (std::string::iterator it = str.begin(); it != str.end(); ++it)
+		{
+			if (!std::isalnum(*it))
+				return (false);
+		}
+	return (true);
+}
+
+std::string	Contact::_checkInput(const std::string prompt) const
+{
+	std::string	input;
+
+	while (!std::cin.eof() && true)
+	{
+		std::cout << "\033[1;4m" << prompt << "\033[0m" << std::endl;
+		std::getline(std::cin >> std::ws, input);
+		if (_alnumStr(input))
+			break ;
+		std::cout << "Invalid input, must be alpha numeric" << std::endl;
+	}
+	return (input);
+}
+
 void	Contact::init()
 {
-	std::cout << "\033[1;4mPlease enter your contact's first name :\033[0m" << std::endl;
-	std::cin >> this->_firstName;
-	std::cout << "\033[1;4mPlease enter your contact's last name :\033[0m" << std::endl;
-	std::cin >> this->_lastName;
-	std::cout << "\033[1;4mPlease enter your contact's nickname :\033[0m" << std::endl;
-	std::cin >> this->_nickName;
-	std::cout << "\033[1;4mPlease enter your contact's phone number :\033[0m" << std::endl;
-	std::cin >> this->_phoneNumber;
-	std::cout << "\033[1;4mPlease enter your contact's darkest secret :\033[0m" << std::endl;
-	std::cin >> this->_secret;
+	this->_firstName = _checkInput("Please enter your contact's first name :");
+	this->_lastName = _checkInput("Please enter your contact's last name: ");
+    this->_nickName = _checkInput("Please enter your contact's nickname: ");
+    this->_phoneNumber = _checkInput("Please enter your contact's phone number: ");
+    this->_secret = _checkInput("Please enter your contact's darkest secret: ");
 	std::cout << "                 ~~~~~~                 " << std::endl;
 }
 

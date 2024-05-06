@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:46:22 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/03 16:43:45 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/06 10:13:58 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 
 	rep.launch();
 	std::cin >> input;
-	while (input.compare("EXIT") != 0)
+	while (!std::cin.eof() && input.compare("EXIT") != 0)
 	{
 		if (input.compare("ADD") == 0)
 			rep.addContact();

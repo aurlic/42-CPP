@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:52:03 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/03 16:39:15 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/06 16:11:36 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <string>
 # include <iostream>
 # include <iomanip>
+# include <cctype>
+# include <limits>
 
 class Contact
 {
@@ -28,6 +30,8 @@ class Contact
 		std::string	_secret;
 
 		std::string	_setLen(std::string str) const;
+		std::string	_checkInput(const std::string prompt) const;
+		bool		_alnumStr(std::string str) const;
 
 	public:
 		Contact();
