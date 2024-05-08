@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 16:56:31 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/07 17:46:01 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/08 10:15:45 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
+#include <limits>
 
 class	Zombie
 {

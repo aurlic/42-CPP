@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:00:16 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/07 17:45:39 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/08 10:42:56 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ Zombie::Zombie(){
 }
 
 Zombie::~Zombie(void){
-	std::cout << this->name << " has been destroyed." << std::endl;
+	std::cout << "\033[0;31m" << this->name << " has been destroyed.\033[0m" << std::endl;
 }
 
 void	Zombie::announce(void){
-	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << "\033[1;32m" << name << ": BraiiiiiiinnnzzzZ...\033[0m 🧟🧠" << std::endl;
 }
 
 void	Zombie::setName(std::string name){
