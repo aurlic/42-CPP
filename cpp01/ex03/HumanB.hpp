@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 12:02:59 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/08 12:03:31 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/08 16:06:37 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ class HumanB
 {
 	private:
 		std::string	_name;
-		Weapon		_weapon;
+		Weapon		*_weapon;
 
 	public:
-		HumanB();
+		HumanB(std::string name);
 		~HumanB();
 
-		void	attack();
+		void	attack() const;
+		void	setWeapon(Weapon &weapon);
 };
 
-#endif HUMANB_HPP
+#endif
