@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 11:51:04 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/10 12:17:44 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/10 14:08:29 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,17 @@ class Fixed
 		Fixed();
 		~Fixed();
 		Fixed(Fixed const &src);
-		Fixed	&operator=(Fixed const &rhs);
+		Fixed(int const toFixedValue);
+		Fixed(float const toFixedValue);
+
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
+		float	toFloat(void) const;
+		int		toInt(void) const;
+
+		Fixed	&operator=(Fixed const &rhs);
 };
+
+std::ostream	&operator<<(std::ostream &o, Fixed const &rhs);
 
 #endif //FIXED_HPP
