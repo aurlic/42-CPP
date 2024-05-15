@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 12:09:42 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/15 14:47:44 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/15 17:32:37 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class ClapTrap
 		void	attack(const std::string &target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
-		// void	getHP();
+		void	getHP();
 };
 
 #endif //CLAPTRAP_HPP

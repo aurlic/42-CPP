@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:20:52 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/15 15:28:53 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/15 17:37:27 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 /* ************************************************************************** */
 
-DiamondTrap::DiamondTrap() {}
-
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), FragTrap(name), ScavTrap(name) {
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), ScavTrap(name), FragTrap(name) {
+	std::cout << "DiamondTrap: constructor called." << std::endl;
 	this->_name = name;
 	this->ClapTrap::_name = name + "_clap_name";
 	this->_hitPoints = FragTrap::_hitPoints;
@@ -25,19 +24,8 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), FragTrap(name), Sca
 
 }
 
-DiamondTrap::DiamondTrap(DiamondTrap const &other) {
-	*this = other;
-}
-
-/* ************************************************************************** */
-
-
-DiamondTrap	&DiamondTrap::operator=(DiamondTrap const &rhs) {
-	this->_name = rhs._name;
-	this->_hitPoints = rhs._hitPoints;
-	this->_energyPoints = rhs._energyPoints;
-	this->_attackDamage = rhs._attackDamage;
-	return (*this);
+DiamondTrap::~DiamondTrap() {
+	std::cout << "DiamondTrap: destructor called." << std::endl;
 }
 
 /* ************************************************************************** */

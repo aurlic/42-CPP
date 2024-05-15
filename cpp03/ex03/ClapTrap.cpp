@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 12:13:51 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/15 14:47:41 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/15 17:32:42 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 
 /* ************************************************************************** */
 
-// void	ClapTrap::getHP() {
-// 	std::cout << this->_name << " has " << this->_hitPoints << " HP." << std::endl;
-// }
+void	ClapTrap::getHP() {
+	std::cout << this->_name << " has " << this->_hitPoints << " HP." << std::endl;
+}

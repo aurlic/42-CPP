@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:14:40 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/15 15:21:29 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/15 17:36:51 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,13 @@ class DiamondTrap : public ScavTrap, public FragTrap
 {
 	private:
 		std::string	_name;
-		DiamondTrap();
 
 	public:
 		DiamondTrap(std::string name);
-		DiamondTrap(DiamondTrap const &other);
 		~DiamondTrap();
 
-		DiamondTrap	&operator=(DiamondTrap const &rhs);
-
 		void	whoAmI();
+		using	ScavTrap::attack; // Use ScavTrap's attack method instead of default
 };
 
 #endif //DIAMONDTRAP_HPP
