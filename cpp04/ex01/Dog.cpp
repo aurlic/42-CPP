@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 16:43:40 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/16 17:01:37 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/17 10:42:36 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 Dog::Dog() {
 	std::cout << "[DOG] Constructor called." << std::endl;
 	_type = "Dog";
+	_brain = new Brain();
 }
 
 Dog::~Dog() {
 	std::cout << "[DOG] Destructor called." << std::endl;
+	delete _brain;
 }
 
 Dog::Dog(Dog const &other) {
@@ -27,7 +29,11 @@ Dog::Dog(Dog const &other) {
 }
 
 Dog	&Dog::operator=(Dog const &rhs) {
-	this->_type = rhs._type;
+	if (this != &rhs)
+	{
+		this->_type = rhs._type;
+		this->_brain = new Brain(*rhs._brain);
+	}
 	return (*this);
 }
 

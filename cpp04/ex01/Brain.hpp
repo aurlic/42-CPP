@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 17:40:25 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/16 17:59:56 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/17 10:22:12 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define BRAIN_HPP
 
 #include <string>
+#include <iostream>
+#include <iomanip>
 
 class Brain
 {
@@ -22,7 +24,7 @@ class Brain
 
 	public:
 		Brain();
-		~Brain();
+		virtual ~Brain();
 
 		Brain(Brain const &other);
 		Brain	&operator=(Brain const &rhs);

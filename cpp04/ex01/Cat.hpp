@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 16:37:15 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/16 18:00:46 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/17 09:43:32 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Cat : public Animal
 {
 	private:
-		Brain	*brain;
+		Brain	*_brain;
 
 	public:
 		Cat();

@@ -6,41 +6,43 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:27:24 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/16 17:35:25 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/17 10:43:52 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "WrongCat.hpp"
+#include <limits>
 
 int main()
 {
-	std::cout << "-----------------------------------------" << std::endl;
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	Animal	*tab[100];
+	int		size = 0;
 
-	const WrongAnimal* k = new WrongCat();
-	std::cout << "-----------------------------------------" << std::endl;
+	while (true) {
+		std::cout << "Please enter the array size: ";
+		if (std::cin >> size) {
+			break;
+		}
+		else {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "Invalid input. Please enter an integer.\n";
+		}
+	}
+	for (int i = 0; i < size; ++i) {
+		if (i < size / 2) {
+			tab[i] = new Dog();
+		}
+		else if (i >= size / 2) {
+			tab[i] = new Cat();
+		}
+	}
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << k->getType() << " " << std::endl;
+	for (int i = 0; i < size; ++i) {
+		delete tab[i];
+	}
 
-	std::cout << "-----------------------------------------" << std::endl;
-
-	i->makeSound();
-	j->makeSound();
-	meta->makeSound();
-	k->makeSound();
-
-	std::cout << "-----------------------------------------" << std::endl;
-
-	delete meta;
-	delete i;
-	delete j;
-	delete k;
-	
-	return 0;
+	return (0);
 }

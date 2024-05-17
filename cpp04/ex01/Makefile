@@ -9,7 +9,7 @@ NAME		:=	polymorphism2
 # **************************************************************************** #
 
 CC			:=	c++
-CFLAGS		:=	-Wall -Wextra -Werror -std=c++98
+CFLAGS		:=	-g3 -Wall -Wextra -Werror -std=c++98
 DEP_FLAGS	:=	-MMD -MP
 RM			:=	rm -rf
 
@@ -46,6 +46,7 @@ ITALIC		:=	\033[3m
 
 # INCLUDES #
 INCLUDES	:=	Animal.hpp \
+				Brain.hpp \
 				Cat.hpp \
 				Dog.hpp \
 				WrongAnimal.hpp \
@@ -56,6 +57,7 @@ INCLD_FLAG	:=	$(addprefix -I , $(INCLUDES))
 # SOURCES #
 SRC			:=	main.cpp \
 				Animal.cpp \
+				Brain.cpp \
 				Cat.cpp \
 				Dog.cpp \
 				WrongAnimal.cpp \
