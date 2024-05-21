@@ -2,7 +2,7 @@
 #                                    PROGRAM                                   #
 # **************************************************************************** #
 
-NAME		:=	bureaucrat
+NAME		:=	forms
 
 # **************************************************************************** #
 #                                     UTILS                                    #
@@ -46,13 +46,14 @@ ITALIC		:=	\033[3m
 
 # INCLUDES #
 INCLUDES	:=	Bureaucrat.hpp \
-
+				Forms.hpp \
 
 INCLD_FLAG	:=	$(addprefix -I , $(INCLUDES))
 
 # SOURCES #
 SRC			:=	main.cpp \
 				Bureaucrat.cpp \
+				Forms.cpp \
 
 OBJS 		:=	$(patsubst %.cpp,$(OBJS_DIR)/%.o,$(SRC))
 DEPS		:=	$(patsubst %.cpp,$(OBJS_DIR)/%.d,$(SRC))
@@ -65,25 +66,25 @@ DEPS		:=	$(patsubst %.cpp,$(OBJS_DIR)/%.d,$(SRC))
 all:	$(NAME)
 
 $(NAME): $(OBJS)
-	@printf "\r\033[K[bureaucrat 👨‍💼] \033[4;32mBuilding bureaucrat: $<\033[0m"
+	@printf "\r\033[K[forms 📝] \033[4;32mBuilding forms: $<\033[0m"
 	@$(CC) $(OBJS) -o $(NAME)
-	@printf "\r\033[K[bureaucrat 👨‍💼] \033[0;32mDone!\033[0m\n"
+	@printf "\r\033[K[forms 📝] \033[0;32mDone!\033[0m\n"
 
 -include $(DEPS)
 $(OBJS_DIR)/%.o: ./%.cpp
-	@printf "$(NEW)[bureaucrat 👨‍💼] $(U_GREEN)Building:$(DEFAULT) $<"
+	@printf "$(NEW)[forms 📝] $(U_GREEN)Building:$(DEFAULT) $<"
 	@mkdir -p $(OBJS_DIR)
 	@$(CC) $(DEP_FLAGS) $(CFLAGS) $(INCLD_FLAG) -c $< -o $@
 
 clean:
-	@printf "[bureaucrat 👨‍💼] $(RED)Cleaning objects...$(DEFAULT)\n"
+	@printf "[forms 📝] $(RED)Cleaning objects...$(DEFAULT)\n"
 	@$(RM) $(OBJS_DIR)
-	@printf "[bureaucrat 👨‍💼] $(RED)Cleaned objects!$(DEFAULT)\n"
+	@printf "[forms 📝] $(RED)Cleaned objects!$(DEFAULT)\n"
 
 fclean: clean
-	@printf "[bureaucrat 👨‍💼] \033[0;31mDeleting bureaucrat executable\033[0m\n"
+	@printf "[forms 📝] \033[0;31mDeleting forms executable\033[0m\n"
 	@$(RM) $(NAME)
-	@printf "[bureaucrat 👨‍💼] \033[1;32mDone\033[0m\n\n"
+	@printf "[forms 📝] \033[1;32mDone\033[0m\n\n"
 
 re: fclean all
 
