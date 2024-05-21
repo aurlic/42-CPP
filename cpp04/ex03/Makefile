@@ -74,25 +74,25 @@ DEPS		:=	$(patsubst %.cpp,$(OBJS_DIR)/%.d,$(SRC))
 all:	$(NAME)
 
 $(NAME): $(OBJS)
-	@printf "\r\033[K[interface 🛠️] \033[4;32mBuilding interface: $<\033[0m"
+	@printf "\r\033[K[interface 🛠️ ] \033[4;32mBuilding interface: $<\033[0m"
 	@$(CC) $(OBJS) -o $(NAME)
-	@printf "\r\033[K[interface 🛠️] \033[0;32mDone!\033[0m\n"
+	@printf "\r\033[K[interface 🛠️ ] \033[0;32mDone!\033[0m\n"
 
 -include $(DEPS)
 $(OBJS_DIR)/%.o: ./%.cpp
-	@printf "$(NEW)[interface 🛠️] $(U_GREEN)Building:$(DEFAULT) $<"
+	@printf "$(NEW)[interface 🛠️ ] $(U_GREEN)Building:$(DEFAULT) $<"
 	@mkdir -p $(OBJS_DIR)
 	@$(CC) $(DEP_FLAGS) $(CFLAGS) $(INCLD_FLAG) -c $< -o $@
 
 clean:
-	@printf "[interface 🛠️] $(RED)Cleaning objects...$(DEFAULT)\n"
+	@printf "[interface 🛠️ ] $(RED)Cleaning objects...$(DEFAULT)\n"
 	@$(RM) $(OBJS_DIR)
-	@printf "[interface 🛠️] $(RED)Cleaned objects!$(DEFAULT)\n"
+	@printf "[interface 🛠️ ] $(RED)Cleaned objects!$(DEFAULT)\n"
 
 fclean: clean
-	@printf "[interface 🛠️] \033[0;31mDeleting interface executable\033[0m\n"
+	@printf "[interface 🛠️ ] \033[0;31mDeleting interface executable\033[0m\n"
 	@$(RM) $(NAME)
-	@printf "[interface 🛠️] \033[1;32mDone\033[0m\n\n"
+	@printf "[interface 🛠️ ] \033[1;32mDone\033[0m\n\n"
 
 re: fclean all
 
