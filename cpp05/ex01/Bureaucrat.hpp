@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:17:30 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/27 09:42:38 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/27 13:44:49 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ class Bureaucrat
 
 		std::string	getName() const;
 		int			getGrade() const;
+
 		void		incrementGrade(); // ++ and -- overload useless because memeber function required.
 		void		decrementGrade(); 
+		void		signForm(Form &form);
 
 		class GradeTooLowException : public std::exception {
 			public:
