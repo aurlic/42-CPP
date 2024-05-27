@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:17:30 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/21 13:55:50 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/27 09:42:38 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ class Bureaucrat
 				virtual const char* what() const throw() {return ("Grade is too high !");}
 		};
 };
+
+std::ostream	&operator<<(std::ostream &out, Bureaucrat const &b);
 
 #endif // BUREAUCRAT_HPP

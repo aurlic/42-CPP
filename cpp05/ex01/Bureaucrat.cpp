@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:21:43 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/21 14:02:16 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/27 09:42:49 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,9 @@ void		Bureaucrat::decrementGrade() {
 	_grade++;
 	if (_grade > 150)
 		throw (Bureaucrat::GradeTooLowException());
+}
+
+std::ostream	&operator<<(std::ostream &out, Bureaucrat const &b) {
+	out << b.getName() << "'s current grade is : " << b.getGrade();
+	return (out);
 }

@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:02:25 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/21 14:44:03 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/27 09:41:06 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,15 @@ int	main() {
 	
 	try {
 		Bureaucrat	instance(name, grade);
-		std::cout << instance.getName() << "'s current grade is : " << instance.getGrade() << std::endl;
+		std::cout << instance << std::endl;
 		for (int i = 0; i < 10; i++) {
 			instance.decrementGrade();
 		}
-		std::cout << instance.getName() << "'s current grade is : " << instance.getGrade() << std::endl;
+		std::cout << instance << std::endl;
 		for (int i = 0; i < 28; i++) {
 			instance.incrementGrade();
 		}
-		std::cout << instance.getName() << "'s current grade is : " << instance.getGrade() << std::endl;
+		std::cout << instance << std::endl;
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
