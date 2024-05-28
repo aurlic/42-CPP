@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:17:30 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/27 13:44:49 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/28 10:55:09 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <iostream>
 # include <iomanip>
 # include <algorithm>
+# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {

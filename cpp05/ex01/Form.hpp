@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:22:28 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/27 13:46:51 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/28 10:54:09 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FORM_HPP
 
 #include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
@@ -33,8 +35,8 @@ class Form
 
 		std::string const	getName() const;
 		bool				getSigned() const;
-		int const			getSignedGrade() const;
-		int const			getExecGrade() const;
+		int					getSignedGrade() const;
+		int 				getExecGrade() const;
 
 		bool				beSigned(Bureaucrat bureaucrat);
 

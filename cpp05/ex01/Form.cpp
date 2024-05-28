@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:22:27 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/27 13:46:54 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/28 10:56:53 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Form::Form() : _name("Empty"), _signed(false), _signGrade(0), _execGrade(0) {}
 
 Form::~Form() {}
 
-Form::Form(std::string name, int signGrade, int execGrade) : _name(name), _signGrade(signGrade), _execGrade(execGrade) , _signed(false){	
+Form::Form(std::string name, int signGrade, int execGrade) : _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade){	
 	if (signGrade < 1 || execGrade < 1) {
 		throw (Form::GradeTooHighException());
 	} else if (signGrade > 150 || execGrade > 150) {
@@ -46,11 +46,11 @@ bool	Form::getSigned() const {
 	return (false);
 }
 
-int const	Form::getSignedGrade() const {
+int	Form::getSignedGrade() const {
 	return (_signGrade);
 }
 
-int const	Form::getExecGrade() const {
+int	Form::getExecGrade() const {
 	return (_execGrade);
 }
 
@@ -69,4 +69,5 @@ std::ostream	&operator<<(std::ostream &out, Form const &b) {
 	out << "Signed : " << b.getSigned() << std::endl;
 	out << "Sign Grade : " << b.getSignedGrade() << std::endl;
 	out << "Exec Grade : " << b.getExecGrade() << std::endl;
+	return (out);
 }

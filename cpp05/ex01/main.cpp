@@ -6,11 +6,11 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:02:25 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/21 14:44:03 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/28 11:06:33 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <limits>
 
 bool isValidName(const std::string &name) {
@@ -23,7 +23,10 @@ bool isValidName(const std::string &name) {
 
 int	main() {
 	std::string name;
+	std::string formName;
 	int			grade;
+	int			signGrade;
+	int			execGrade;
 
 	while (true) {
 		std::cout << "Please enter a name for your bureaucrat : ";
@@ -34,33 +37,36 @@ int	main() {
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			continue ;
 		}
-		std::cout << std::endl << "Please enter a grade for your bureaucrat : ";
+		std::cout << "Please enter a grade for your bureaucrat : ";
 		std::cin >> grade;
 		break ;
 	}
-	
+	std::cout << "                   ~~~~                   " << std::endl;
+	while (true) {
+		std::cout << "Please enter a name for your form : ";
+		std::cin >> formName;
+		if (!isValidName(formName)) {
+			std::cout << "Invalid name, must contain alphabetic characters only." << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue ;
+		}
+		std::cout << "Please enter the grade required for your form to be signed : ";
+		std::cin >> signGrade;
+		std::cout << "Please enter the grade required for your form to be executed : ";		
+		std::cin >> execGrade;
+		break ;
+	}
+	std::cout << "                   ~~~~                   " << std::endl;
 	try {
 		Bureaucrat	instance(name, grade);
-		std::cout << instance.getName() << "'s current grade is : " << instance.getGrade() << std::endl;
-		for (int i = 0; i < 10; i++) {
-			instance.decrementGrade();
-		}
-		std::cout << instance.getName() << "'s current grade is : " << instance.getGrade() << std::endl;
-		for (int i = 0; i < 28; i++) {
-			instance.incrementGrade();
-		}
-		std::cout << instance.getName() << "'s current grade is : " << instance.getGrade() << std::endl;
+		Form		form(formName, signGrade, execGrade);
+		
+		std::cout << form << std::endl;
+		instance.signForm(form);
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
-
-	// try {
-	// 	Bureaucrat instance("Looser", 178);
-	// 	Bureaucrat instance("Cheater", 0);
-	// }
-	// catch (std::exception &e) {
-	// 	std::cout << e.what() << std::endl;
-	// }
 	return (0);
 }

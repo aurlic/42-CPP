@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:21:43 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/27 13:53:46 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/28 11:02:18 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ void		Bureaucrat::decrementGrade() {
 
 void	Bureaucrat::signForm(Form &form) {
 	if (form.beSigned(*this) == true) {
-		std::cout << this->_name << "has signed " << form.getName() << "'s form." << std::endl;
+		std::cout << this->_name << " has signed " << form.getName() << "'s form." << std::endl;
 	} else {
-		std::cout << this->_name << "could not sign " << form.getName() << "'s form because his grade is " \
+		std::cout << this->_name << " could not sign " << form.getName() << "'s form because his grade is " \
 		<< this->_grade << ", and the required grade to sign the form was " << form.getSignedGrade() << std::endl;
 	}
 }

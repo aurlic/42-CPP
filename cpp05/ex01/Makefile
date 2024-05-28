@@ -46,14 +46,14 @@ ITALIC		:=	\033[3m
 
 # INCLUDES #
 INCLUDES	:=	Bureaucrat.hpp \
-				Forms.hpp \
+				Form.hpp \
 
 INCLD_FLAG	:=	$(addprefix -I , $(INCLUDES))
 
 # SOURCES #
 SRC			:=	main.cpp \
 				Bureaucrat.cpp \
-				Forms.cpp \
+				Form.cpp \
 
 OBJS 		:=	$(patsubst %.cpp,$(OBJS_DIR)/%.o,$(SRC))
 DEPS		:=	$(patsubst %.cpp,$(OBJS_DIR)/%.d,$(SRC))
