@@ -6,11 +6,12 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:02:25 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/29 16:10:13 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/29 16:36:39 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
+#include "Intern.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
@@ -25,56 +26,24 @@ bool isValidName(const std::string &name) {
 }
 
 int	main() {
-	std::string	name;
-	int			grade;
+	Intern someRandomIntern;
+	AForm* rrf;
 
-	while (true) {
-		std::cout << "Please enter a name for your bureaucrat : ";
-		std::cin >> name;
-		if (std::cin.eof()) {
-			return (0);
+	// rrf = someRandomIntern.makeForm("RobotomyRequestForm", "Bender");
+	// rrf = someRandomIntern.makeForm("PresidentialPardonForm", "Bender");
+	// rrf = someRandomIntern.makeForm("ShrubberyCreationForm", "Bender");
+	rrf = someRandomIntern.makeForm("fakeForm", "Bender");
+
+	if (rrf) {
+		Bureaucrat	bob("Bob", 1);
+		try {
+			rrf->execute(bob);
+		} catch (std::exception &e) {
+			std::cout << e.what() << std::endl;
 		}
-		if (!isValidName(name)) {
-			std::cout << "Invalid name, must contain alphabetic characters only." << std::endl;
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			continue ;
-		}
-		std::cout << "Please enter a grade for your bureaucrat : ";
-		std::cin >> grade;
-		if (std::cin.eof()) {
-			return (0);
-		}
-		break ;
+	} else {
+		std::cout << "Form creation failed." << std::endl;
 	}
-	Bureaucrat	worker(name, grade);
-	std::cout << "                   ~~~~                   " << std::endl;
-
-	// AForm	instance(); Can not be intanciated because abstract
-	
-	// PRESIDENTIAL PARDON FORM
-	// PresidentialPardonForm	presForm("Bad guy");
-	// try {
-	// 	presForm.execute(worker);
-	// } catch (std::exception &e) {
-	// 	std::cout << e.what() << std::endl;
-	// }
-
-	// ROBOTOMY REQUEST FORM
-	RobotomyRequestForm	robotForm("Human");
-	try {
-		robotForm.execute(worker);
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-
-	// SHRUBBERY CREATION FORM
-	// ShrubberyCreationForm	shrubForm("cool");
-	// try {
-	// 	shrubForm.execute(worker);
-	// } catch (std::exception &e) {
-	// 	std::cout << e.what() << std::endl;
-	// }
-
+	delete rrf;
 	return (0);
 }
