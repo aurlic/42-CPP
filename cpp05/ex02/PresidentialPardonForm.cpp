@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:10:10 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/28 16:35:24 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/29 14:36:47 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPard
 }
 
 void	PresidentialPardonForm::execute(const Bureaucrat &executor) {
+	if (this->beSigned(executor) == true) {
+		std::cout << executor.getName() << " just signed the form." << std::endl;
+	} else {
+		throw (AForm::GradeTooLowException());
+	}
 	if (executor.getGrade() <= this->getExecGrade()) {
 		std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 	} else {

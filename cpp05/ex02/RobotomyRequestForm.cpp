@@ -6,11 +6,13 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:30:20 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/28 16:37:21 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/29 14:36:41 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
+#include <cstdlib>
+#include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm(){}
 
@@ -30,13 +32,21 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &r
 }
 
 void	RobotomyRequestForm::execute(const Bureaucrat &executor) {
+	if (this->beSigned(executor) == true) {
+		std::cout << executor.getName() << " just signed the form." << std::endl;
+	} else {
+		throw (AForm::GradeTooLowException());
+	}
 	std::cout << "🤖 Bzzz... Vrrrr... Bzzz... 🤖" << std::endl;
 	if (executor.getGrade() <= this->getExecGrade()) {
-		std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+		std::srand(std::time(NULL));
+		if (std::rand() % 2 == 1) {
+			std::cout << _target << " has been robotomized ! 🧑➜🤖✅" << std::endl;
+		} else {
+			std::cout << _target << " couldn't be robotomized... 🧑➜🤖❌" << std::endl;
+		}
 	} else {
 		std::cout << "The " << this->getName() << " form could not be executed because :" << std::endl;
 		throw (AForm::GradeTooLowException());
 	}
 }
-
-rand() % 2

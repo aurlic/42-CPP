@@ -6,12 +6,14 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:02:25 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/28 16:15:24 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/29 14:38:23 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include <limits>
 
 bool isValidName(const std::string &name) {
@@ -23,7 +25,6 @@ bool isValidName(const std::string &name) {
 }
 
 int	main() {
-	// AForm	instance(); Can not be intanciated because abstract
 	std::string	name;
 	int			grade;
 
@@ -43,6 +44,8 @@ int	main() {
 	Bureaucrat	worker(name, grade);
 	std::cout << "                   ~~~~                   " << std::endl;
 
+	// AForm	instance(); Can not be intanciated because abstract
+	
 	// PRESIDENTIAL PARDON FORM
 	// PresidentialPardonForm	presForm("Bad guy");
 	// try {
@@ -51,6 +54,21 @@ int	main() {
 	// 	std::cout << e.what() << std::endl;
 	// }
 
+	// ROBOTOMY REQUEST FORM
+	RobotomyRequestForm	robotForm("Human");
+	try {
+		robotForm.execute(worker);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+
+	// SHRUBBERY CREATION FORM
+	// ShrubberyCreationForm	shrubForm("cool");
+	// try {
+	// 	shrubForm.execute(worker);
+	// } catch (std::exception &e) {
+	// 	std::cout << e.what() << std::endl;
+	// }
 
 	return (0);
 }

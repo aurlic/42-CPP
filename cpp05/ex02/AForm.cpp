@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:22:27 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/28 14:14:44 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/29 14:17:44 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ bool	AForm::beSigned(Bureaucrat bureaucrat) {
 		return (true);
 	}
 	else {
-		throw AForm::GradeTooLowException();
+		throw (AForm::GradeTooLowException());
 	}
 }
 
