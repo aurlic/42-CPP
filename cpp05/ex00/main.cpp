@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:02:25 by aurlic            #+#    #+#             */
-/*   Updated: 2024/05/27 09:41:06 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/05/29 16:10:33 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ int	main() {
 	while (true) {
 		std::cout << "Please enter a name for your bureaucrat : ";
 		std::cin >> name;
+		if (std::cin.eof()) {
+			return (0);
+		}
 		if (!isValidName(name)) {
 			std::cout << "Invalid name, must contain alphabetic characters only." << std::endl;
 			std::cin.clear();
@@ -36,6 +39,9 @@ int	main() {
 		}
 		std::cout << std::endl << "Please enter a grade for your bureaucrat : ";
 		std::cin >> grade;
+		if (std::cin.eof()) {
+			return (0);
+		}
 		break ;
 	}
 	
