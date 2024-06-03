@@ -2,7 +2,7 @@
 #                                    PROGRAM                                   #
 # **************************************************************************** #
 
-NAME		:=	intern
+NAME		:=	ScalarConversion
 
 # **************************************************************************** #
 #                                     UTILS                                    #
@@ -45,23 +45,13 @@ ITALIC		:=	\033[3m
 # **************************************************************************** #
 
 # INCLUDES #
-INCLUDES	:=	Bureaucrat.hpp \
-				AForm.hpp \
-				ShrubberyCreationForm.hpp \
-				RobotomyRequestForm.hpp \
-				PresidentialPardonForm.hpp \
-				Intern.hpp \
+INCLUDES	:=	ScalarConverter.hpp \
 
 INCLD_FLAG	:=	$(addprefix -I , $(INCLUDES))
 
 # SOURCES #
 SRC			:=	main.cpp \
-				Bureaucrat.cpp \
-				AForm.cpp \
-				ShrubberyCreationForm.cpp \
-				RobotomyRequestForm.cpp \
-				PresidentialPardonForm.cpp \
-				Intern.cpp \
+				ScalarConverter.cpp \
 
 OBJS 		:=	$(patsubst %.cpp,$(OBJS_DIR)/%.o,$(SRC))
 DEPS		:=	$(patsubst %.cpp,$(OBJS_DIR)/%.d,$(SRC))
@@ -74,25 +64,25 @@ DEPS		:=	$(patsubst %.cpp,$(OBJS_DIR)/%.d,$(SRC))
 all:	$(NAME)
 
 $(NAME): $(OBJS)
-	@printf "\r\033[K[Intern 👨‍💼] \033[4;32mBuilding Intern: $<\033[0m"
+	@printf "\r\033[K[ScalarConversion 🔄] \033[4;32mBuilding ScalarConversion: $<\033[0m"
 	@$(CC) $(OBJS) -o $(NAME)
-	@printf "\r\033[K[Intern 👨‍💼] \033[0;32mDone!\033[0m\n"
+	@printf "\r\033[K[ScalarConversion 🔄] \033[0;32mDone!\033[0m\n"
 
 -include $(DEPS)
 $(OBJS_DIR)/%.o: ./%.cpp
-	@printf "$(NEW)[Intern 👨‍💼] $(U_GREEN)Building:$(DEFAULT) $<"
+	@printf "$(NEW)[ScalarConversion 🔄] $(U_GREEN)Building:$(DEFAULT) $<"
 	@mkdir -p $(OBJS_DIR)
 	@$(CC) $(DEP_FLAGS) $(CFLAGS) $(INCLD_FLAG) -c $< -o $@
 
 clean:
-	@printf "[Intern 👨‍💼] $(RED)Cleaning objects...$(DEFAULT)\n"
+	@printf "[ScalarConversion 🔄] $(RED)Cleaning objects...$(DEFAULT)\n"
 	@$(RM) $(OBJS_DIR)
-	@printf "[Intern 👨‍💼] $(RED)Cleaned objects!$(DEFAULT)\n"
+	@printf "[ScalarConversion 🔄] $(RED)Cleaned objects!$(DEFAULT)\n"
 
 fclean: clean
-	@printf "[Intern 👨‍💼] \033[0;31mDeleting Intern executable\033[0m\n"
+	@printf "[ScalarConversion 🔄] \033[0;31mDeleting ScalarConversion executable\033[0m\n"
 	@$(RM) $(NAME)
-	@printf "[Intern 👨‍💼] \033[1;32mDone\033[0m\n\n"
+	@printf "[ScalarConversion 🔄] \033[1;32mDone\033[0m\n\n"
 
 re: fclean all
 

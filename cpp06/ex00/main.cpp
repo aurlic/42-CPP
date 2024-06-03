@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/31 13:20:14 by aurlic            #+#    #+#             */
-/*   Updated: 2024/06/03 15:08:16 by aurlic           ###   ########.fr       */
+/*   Created: 2024/06/03 11:27:22 by aurlic            #+#    #+#             */
+/*   Updated: 2024/06/03 15:12:22 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "ScalarConverter.hpp"
 
-#include <iomanip>
-#include <iostream>
-#include <string>
-#include <cstdlib>
-#include <climits>
+int	main() {
+	std::string	literal;
 
-class ScalarConverter
-{
-	private:
-		ScalarConverter();
+	std::cout << "Please input something to be converted: ";
+	getline(std::cin, literal);
+	if (literal.empty()) {
+		std::cout << "Input can't be empty." << std::endl;
+		return (EXIT_FAILURE);
+	}
+	ScalarConverter::convert(literal);
 
-	public:
-		~ScalarConverter();
-
-		ScalarConverter(const ScalarConverter &other);
-		ScalarConverter	&operator=(const ScalarConverter &rhs);
-
-		static void		convert(std::string &literal);
-};
+	return (EXIT_SUCCESS);
+}
