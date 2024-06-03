@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:25:00 by aurlic            #+#    #+#             */
-/*   Updated: 2024/06/03 15:11:41 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/06/03 15:24:34 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,15 @@ void	ScalarConverter::convert(std::string &literal) {
 	int			toDouble = 0;
 	std::string	toChar = "";
 	std::string	extra[6] = {"-inff", "+inff", "nanf", "-inf", "+inf", "nan"};
+
+	// Check for nan or nanf
+	if (literal == "nan" || literal == "nanf") {
+		std::cout << "char: Impossible conversion" << std::endl;
+		std::cout << "int: Impossible conversion" << std::endl;
+		std::cout << "float: nanf" << std::endl;
+		std::cout << "double: nan" << std::endl;
+		return;
+	}
 
 	// Check if literal is a char
 	if (literal.length() == 1 && std::isprint(literal[0]) && !std::isdigit(literal[0])) { // Check only 1 char and printable 
