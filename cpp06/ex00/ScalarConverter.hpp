@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:20:14 by aurlic            #+#    #+#             */
-/*   Updated: 2024/06/03 15:08:16 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/06/03 15:37:05 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <string>
 #include <cstdlib>
 #include <climits>
+#include <limits>
 
 class ScalarConverter
 {
