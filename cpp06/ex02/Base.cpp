@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 11:11:52 by aurlic            #+#    #+#             */
-/*   Updated: 2024/06/04 15:14:13 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/06/04 15:34:46 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Base	*generate(void) {
 void	identify(Base* p) {
 	std::cout << " ~~ " << std::endl;
 	std::cout << "Identify with pointer : ";
-	if (dynamic_cast<A*>(p)) {
+	if (dynamic_cast<A*>(p)) { // Check if p is of type A, will return true or false
 		std::cout << "Class A identified" << std::endl;
 	} else if (dynamic_cast<B*>(p)) {
 		std::cout << "Class B identified" << std::endl;
