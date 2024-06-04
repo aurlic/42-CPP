@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:25:00 by aurlic            #+#    #+#             */
-/*   Updated: 2024/06/03 15:38:57 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/06/04 09:52:02 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,14 @@ void	ScalarConverter::convert(std::string &literal) {
 		}
 	}
 
-	// if (toChar == "" && std::isprint(toInt)) { // Check that toInt can be printed
-	// 	toChar = std::string("'") + static_cast<char>(toInt) + std::string("'");
-	// } else if (toChar == "") {
-	// 	toChar = "Non printable";
-	// }
-
-if (toChar == "") {
-    if (toInt >= std::numeric_limits<char>::min() && 
-        toInt <= std::numeric_limits<char>::max()) {
-        toChar = std::string("'") + static_cast<char>(toInt) + std::string("'");
-    } else {
-        toChar = "Non printable";
-    }
-}
+	// Check that toInt is within the max and min int
+	if (toChar == "") {
+		if (toInt >= std::numeric_limits<char>::min() && toInt <= std::numeric_limits<char>::max()) {
+			toChar = std::string("'") + static_cast<char>(toInt) + std::string("'");
+		} else {
+			toChar = "Non printable";
+		}
+	}
 
 	// Printing
 	std::cout << "char: " << toChar << std::endl;
