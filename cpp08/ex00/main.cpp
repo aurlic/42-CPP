@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 12:14:27 by aurlic            #+#    #+#             */
-/*   Updated: 2024/06/14 12:42:50 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/06/21 10:02:00 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	main() {
 	} catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
+
+	std::cout << "           ~~~           " << std::endl;
 
 	std::cout << "Searching in list: " << std::endl;
 	try {
