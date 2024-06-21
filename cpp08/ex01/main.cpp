@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 16:17:29 by aurlic            #+#    #+#             */
-/*   Updated: 2024/06/14 16:33:02 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/06/21 10:10:34 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 // 		sp.addNumber(0);
 // 		sp.addNumber(60);
 // 		sp.addNumber(1123);
-// 		sp.addNumber(6); // No room left in span
+// 		// sp.addNumber(6); // No room left in span
 // 	} catch (const Span::SpanFullException &e) {
 // 		std::cerr << "Error adding number: " << e.what() << std::endl;
 // 		return (EXIT_FAILURE);
@@ -53,17 +53,21 @@
 
 // 	std::srand(static_cast<unsigned int>(std::time(NULL)));
 
-// 	ADDNUMBER METHOD :
-// 	for (int i = 0; i < N; ++i) {
-// 		int	number = std::rand() % 100000;
-// 		sp.addNumber(number);
-// 	}
+	// // ADDNUMBER METHOD :
+	// for (int i = 0; i < N; ++i) {
+	// 	int	number = std::rand() % 100000;
+	// 	sp.addNumber(number);
+	// }
 
-// 	ADDRANGE METHOD :
-// 	std::vector<int> randomNumbers(N);
-// 	std::generate(randomNumbers.begin(), randomNumbers.end(), std::rand);
-// 	sp.addRange(randomNumbers.begin(), randomNumbers.end());
-
+	// // ADDRANGE METHOD :
+	// std::vector<int> randomNumbers(N);
+	// std::generate(randomNumbers.begin(), randomNumbers.end(), std::rand);
+	// try {
+	// 	sp.addRange(randomNumbers.begin(), randomNumbers.end());
+	// } catch (const Span::SpanFullException &e) {
+	// 	std::cerr << "Error adding number: " << e.what() <<std::endl;
+	// 	return (EXIT_FAILURE);
+	// }
 // 	std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
 // 	std::cout << "Longest span: " << sp.longestSpan() << std::endl;
 	
