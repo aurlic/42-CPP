@@ -51,6 +51,7 @@
 		"ctime": "cpp",
 		"sstream": "cpp",
 		"fstream": "cpp",
-		"list": "cpp"
+		"list": "cpp",
+		"map": "cpp"
 	}
 }
