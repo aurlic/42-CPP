@@ -1,146 +1,103 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 13:53:32 by aurlic            #+#    #+#             */
-/*   Updated: 2024/06/26 10:48:26 by aurlic           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// /* ************************************************************************** */
+// /*                                                                            */
+// /*                                                        :::      ::::::::   */
+// /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+// /*                                                    +:+ +:+         +:+     */
+// /*   By: arluc <arluc@student.42.fr>                +#+  +:+       +#+        */
+// /*                                                +#+#+#+#+#+   +#+           */
+// /*   Created: 2024/06/24 13:53:32 by aurlic            #+#    #+#             */
+// /*   Updated: 2024/06/26 16:30:32 by arluc            ###   ########.fr       */
+// /*                                                                            */
+// /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-/**
- * @brief Convert a date string to a std::tm object.
- *
- * Converts a date string in the format "YYYY-MM-DD" to a std::tm object.
- * The function manually parses the date string to extract the year, month, and day.
- * If the parsing fails, the function throws an invalid_argument exception.
- *
- * @param dateStr the date string to convert.
- * @throw invalid_argument if the date string is not in the correct format.
- * @return a std::tm object representing the parsed date.
- */
-std::tm	strToDate(std::string dateStr) {
-	std::tm				tm = {};
+// Function to load Bitcoin prices from a CSV file
+std::map<std::string, float> loadBitcoinPrices(const std::string &filename) {
+    std::map<std::string, float> bitcoinPrices;
+    std::ifstream file(filename.c_str());
+    if (!file.is_open()) {
+        std::cerr << "Error: could not open file " << filename << std::endl;
+        return bitcoinPrices;
+    }
 
-	if (sscanf(dateStr.c_str(), "%4d-%2d-%2d", &tm.tm_year, &tm.tm_mon, &tm.tm_mday)) {
-		throw (std::invalid_argument("Invalid date format: " + dateStr));
-	}
+    std::string line;
+    while (std::getline(file, line)) {
+        std::istringstream ss(line);
+        std::string date;
+        std::string priceStr;
+        if (std::getline(ss, date, ',') && std::getline(ss, priceStr)) {
+            bitcoinPrices[date] = static_cast<float>(std::atof(priceStr.c_str()));
+        }
+    }
 
-	tm.tm_year -= 1900;	// Adjust years since 1900
-	tm.tm_mon -= 1;		// Adjust months since January
-	return (tm);
+    file.close();
+    return bitcoinPrices;
 }
 
-/**
- * @brief Read and return the exchange rate from a csv file.
- *
- * Reads the exchange rate from the csv File passed as parameter.
- * Skip the first line containing "date, exchange_rate", then read each line
- * in a loop until the end of the file.
- * To calculate the rate, parse each line to extract the date and rate, convert
- * the date string to a std::tm object, and store the rate in the map with the
- * date as the key.
- *
- * @param csvFile name of the csv file to read from.
- * @throw runtime_error in case there was an error opening the file.
- * @return a new map containing the exchange rate [date]:[rate].
- */
-std::map<std::tm, double>	readExchangeRates(const std::string& csvFile) {
-	std::string					line;
-	std::map<std::tm, double>	exchangeRates;
-	std::ifstream				file(csvFile);
+// Function to process the input file and print the results
+void processInputFile(const std::string &filename, const std::map<std::string, float> &bitcoinPrices) {
+    std::ifstream file(filename.c_str());
+    if (!file.is_open()) {
+        std::cerr << "Error: could not open file." << std::endl;
+        return;
+    }
 
-	if (!file.is_open()) {
-		throw (std::runtime_error("Error: couldn't open file " + csvFile));
-	}
+    std::string line;
+    std::getline(file, line); // Skip the header line
+    while (std::getline(file, line)) {
+        std::istringstream ss(line);
+        std::string date;
+        std::string valueStr;
+        if (std::getline(ss, date, '|') && std::getline(ss, valueStr)) {
+            date.erase(date.find_last_not_of(" \t\n\r\f\v") + 1); // Trim trailing spaces
+            valueStr.erase(0, valueStr.find_first_not_of(" \t\n\r\f\v")); // Trim leading spaces
 
-	std::getline(file, line);
-	while (std::getline(file, line)) {
-		std::string			dateStr, rateStr;
-		std::istringstream	iStr(line);
-		if (std::getline(iStr, dateStr, ',') && std::getline(iStr, rateStr)) {
-			std::stringstream ss(rateStr);
-			double rate;
-			ss >> rate;
-			if (ss.fail() || !ss.eof()) {
-				std::cerr << "Error: invalid rate => " << rateStr << std::endl;
-				continue;
-			}
+            float value;
+            if (!isValidDate(date)) {
+                std::cerr << "Error: bad input => " << date << std::endl;
+            } else if (!isValidValue(valueStr, value)) {
+                std::cerr << "Error: invalid value => " << valueStr << std::endl;
+            } else {
+                std::string closestDate = getClosestDate(date, bitcoinPrices);
+                float price = bitcoinPrices.find(closestDate)->second;
+                std::cout << date << " => " << value << " = " << (value * price) << std::endl;
+            }
+        } else {
+            std::cerr << "Error: bad input format => " << line << std::endl;
+        }
+    }
 
-			std::tm	date = strToDate(dateStr);
-			exchangeRates[date] = rate;
-		}
-	}
-
-	return (exchangeRates);
+    file.close();
 }
 
-std::map<std::tm, double>	readInputs(const std::string& infile) {
-	std::string					line;
-	std::map<std::tm, double>	inputs;
-	std::ifstream				file(infile);
-
-	if (!file.is_open()) {
-		throw (std::runtime_error("Error: couldn't open file " + infile));
-	}
-
-	std::getline(file, line);
-	while (std::getline(file, line)) {
-		std::string			dateStr, valueStr;
-		std::istringstream	iStr(line);
-		if (std::getline(iStr, dateStr, '|') && std::getline(iStr, valueStr)) {
-			try {
-				std::stringstream ss(valueStr);
-				double value;
-				ss >> value;
-				if (ss.fail() || !ss.eof()) {
-					std::cerr << "Error: invalid value => " << valueStr << std::endl;
-					continue;
-				}
-
-				std::tm	date = strToDate(dateStr);
-
-				if (value < 0 || value > 1000) {
-					std::cerr << "Error: invalid value => " << valueStr << std::endl;
-					continue ;
-				}
-				inputs[date] = value;
-			} catch (const std::invalid_argument& e) {
-				std::cerr << "Error: " << e.what() << std::endl;
-			}
-		}
-	}
-
-	return (inputs);
+// Function to find the closest date in the past
+std::string getClosestDate(const std::string &date, const std::map<std::string, float> &bitcoinPrices) {
+    std::map<std::string, float>::const_iterator it = bitcoinPrices.lower_bound(date);
+    if (it == bitcoinPrices.end() || it->first != date) {
+        if (it != bitcoinPrices.begin()) {
+            --it;
+        }
+    }
+    return it->first;
 }
 
-/**
- * @brief Find the exchange rate for a given date.
- *
- * Finds the exchange rate for a given date from the provided map of exchange rates.
- * If the exact date is not found, the function finds the nearest preceding date.
- * If no preceding date exists, the function throws a runtime_error exception.
- *
- * @param exchangeRates map containing date (std::tm) to exchange rate (double) mappings.
- * @param date the date (std::tm) for which to find the exchange rate.
- * @throw runtime_error if no valid preceding date is found in the map.
- * @return the exchange rate (double) for the given date or the nearest preceding date.
- */
-double	findExchangeRate(const std::map<std::tm, double>& exchangeRates, const std::tm& date) {
-	std::map<std::tm, double>::const_iterator	it = exchangeRates.lower_bound(date);	// returns an it pointing to first element that is not >= the given key
+// Function to validate the date format (YYYY-MM-DD)
+bool isValidDate(const std::string &date) {
+    if (date.length() != 10) return false;
+    if (date[4] != '-' || date[7] != '-') return false;
+    int year = std::atoi(date.substr(0, 4).c_str());
+    int month = std::atoi(date.substr(5, 2).c_str());
+    int day = std::atoi(date.substr(8, 2).c_str());
+    return (year > 0 && month > 0 && month <= 12 && day > 0 && day <= 31);
+}
 
-	if (it == exchangeRates.end() || it->first > date) {
-		if (it == exchangeRates.begin()) {
-			char	buf[11];
-			sprintf(buf, "%04d-%02d-%02d", date.tm_year + 1900, date.tm_mon + 1, date.tm_mday);
-			throw (std::runtime_error(std::string("No exchange rate available for date ") + buf));
-		}
-		--it;
-	}
-
-	return (it->second);
+// Function to validate the value and convert it to float
+bool isValidValue(const std::string &valueStr, float &value) {
+    char* endptr;
+    value = std::strtof(valueStr.c_str(), &endptr);
+    if (*endptr != '\0' || value < 0 || value > 1000) {
+        return false;
+    }
+    return true;
 }

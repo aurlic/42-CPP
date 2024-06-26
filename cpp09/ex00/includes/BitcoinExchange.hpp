@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arluc <arluc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 14:24:01 by aurlic            #+#    #+#             */
-/*   Updated: 2024/06/26 10:43:26 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/06/26 17:13:37 by arluc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@
 #include <cstdlib>
 #include <string>
 
-std::tm						strToDate(std::string dateStr);
-
-std::map<std::tm, double>	readExchangeRates(const std::string& csvFile);
-
-std::map<std::tm, double>	readInputs(const std::string& infile);
-
-double						findExchangeRate(const std::map<std::tm, double>& exchangeRates, const std::tm& date);
+std::map<std::string, float> loadBitcoinPrices(const std::string &filename);
+void processInputFile(const std::string &filename, const std::map<std::string, float> &bitcoinPrices);
+std::string getClosestDate(const std::string &date, const std::map<std::string, float> &bitcoinPrices);
+bool isValidDate(const std::string &date);
+bool isValidValue(const std::string &valueStr, float &value);
