@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 14:24:01 by aurlic            #+#    #+#             */
-/*   Updated: 2024/06/26 09:23:43 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/06/26 10:00:49 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <sstream>
 #include <map>
 #include <ctime>
+#include <cstdlib>
 
 std::map<std::tm, double>	readExchangeRates(const std::string& csvFile);
 
