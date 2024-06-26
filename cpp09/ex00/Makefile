@@ -17,6 +17,7 @@ RM			:=	rm -rf
 #                                  DIRECTORIES                                 #
 # **************************************************************************** #
 
+SRCS_DIR 	:=	src
 INCLD_DIR 	:=	includes
 OBJS_DIR 	:=	objs
 
@@ -45,16 +46,18 @@ ITALIC		:=	\033[3m
 # **************************************************************************** #
 
 # INCLUDES #
-INCLUDES	:=	BitcoinExchange.hpp \
-
+INCLUDES	:=	$(strip $(INCLD_DIR))
 INCLD_FLAG	:=	$(addprefix -I , $(INCLUDES))
 
-# SOURCES #
-SRC			:=	main.cpp \
-				BitcoinExchange.cpp \
 
-OBJS 		:=	$(patsubst %.cpp,$(OBJS_DIR)/%.o,$(SRC))
-DEPS		:=	$(patsubst %.cpp,$(OBJS_DIR)/%.d,$(SRC))
+# SOURCES #
+SRC_FILES	:=	main.cpp \
+				BitcoinExchange.cpp
+SRC			:=	$(addprefix $(SRCS_DIR)/, $(SRC_FILES))
+
+# OBJECTS AND DEPENDENCIES #
+OBJS        :=  $(patsubst $(SRCS_DIR)/%.cpp,$(OBJS_DIR)/%.o,$(SRC))
+DEPS        :=  $(patsubst $(SRCS_DIR)/%.cpp,$(OBJS_DIR)/%.d,$(SRC))
 
 
 # **************************************************************************** #
@@ -69,7 +72,7 @@ $(NAME): $(OBJS)
 	@printf "\r\033[K[Bitcoin 💰] \033[0;32mDone!\033[0m\n"
 
 -include $(DEPS)
-$(OBJS_DIR)/%.o: ./%.cpp
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.cpp
 	@printf "$(NEW)[Bitcoin 💰] $(U_GREEN)Building:$(DEFAULT) $<"
 	@mkdir -p $(OBJS_DIR)
 	@$(CC) $(DEP_FLAGS) $(CFLAGS) $(INCLD_FLAG) -c $< -o $@
