@@ -6,7 +6,7 @@
 /*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 14:24:01 by aurlic            #+#    #+#             */
-/*   Updated: 2024/06/26 10:00:49 by aurlic           ###   ########.fr       */
+/*   Updated: 2024/06/26 10:43:26 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 #include <map>
 #include <ctime>
 #include <cstdlib>
+#include <string>
+
+std::tm						strToDate(std::string dateStr);
 
 std::map<std::tm, double>	readExchangeRates(const std::string& csvFile);
 
