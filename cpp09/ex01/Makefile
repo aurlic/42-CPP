@@ -2,7 +2,7 @@
 #                                    PROGRAM                                   #
 # **************************************************************************** #
 
-NAME		:=	btc
+NAME		:=	RPN
 
 # **************************************************************************** #
 #                                     UTILS                                    #
@@ -52,7 +52,7 @@ INCLD_FLAG	:=	$(addprefix -I , $(INCLUDES))
 
 # SOURCES #
 SRC_FILES	:=	main.cpp \
-				BitcoinExchange.cpp
+				RPN.cpp
 SRC			:=	$(addprefix $(SRCS_DIR)/, $(SRC_FILES))
 
 # OBJECTS AND DEPENDENCIES #
@@ -67,25 +67,25 @@ DEPS        :=  $(patsubst $(SRCS_DIR)/%.cpp,$(OBJS_DIR)/%.d,$(SRC))
 all:	$(NAME)
 
 $(NAME): $(OBJS)
-	@printf "\r\033[K[Bitcoin 💰] \033[4;32mBuilding Bitcoin: $<\033[0m"
+	@printf "\r\033[K[RPN 🧮] \033[4;32mBuilding RPN: $<\033[0m"
 	@$(CC) $(OBJS) -o $(NAME)
-	@printf "\r\033[K[Bitcoin 💰] \033[0;32mDone!\033[0m\n"
+	@printf "\r\033[K[RPN 🧮] \033[0;32mDone!\033[0m\n"
 
 -include $(DEPS)
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.cpp
-	@printf "$(NEW)[Bitcoin 💰] $(U_GREEN)Building:$(DEFAULT) $<"
+	@printf "$(NEW)[RPN 🧮] $(U_GREEN)Building:$(DEFAULT) $<"
 	@mkdir -p $(OBJS_DIR)
 	@$(CC) $(DEP_FLAGS) $(CFLAGS) $(INCLD_FLAG) -c $< -o $@
 
 clean:
-	@printf "[Bitcoin 💰] $(RED)Cleaning objects...$(DEFAULT)\n"
+	@printf "[RPN 🧮] $(RED)Cleaning objects...$(DEFAULT)\n"
 	@$(RM) $(OBJS_DIR)
-	@printf "[Bitcoin 💰] $(RED)Cleaned objects!$(DEFAULT)\n"
+	@printf "[RPN 🧮] $(RED)Cleaned objects!$(DEFAULT)\n"
 
 fclean: clean
-	@printf "[Bitcoin 💰] \033[0;31mDeleting Bitcoin executable\033[0m\n"
+	@printf "[RPN 🧮] \033[0;31mDeleting RPN executable\033[0m\n"
 	@$(RM) $(NAME)
-	@printf "[Bitcoin 💰] \033[1;32mDone\033[0m\n\n"
+	@printf "[RPN 🧮] \033[1;32mDone\033[0m\n\n"
 
 re: fclean all
 
