@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arluc <arluc@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aurlic <aurlic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 14:48:31 by arluc             #+#    #+#             */
-/*   Updated: 2024/06/28 15:53:50 by arluc            ###   ########.fr       */
+/*   Updated: 2024/07/02 10:13:29 by aurlic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int ac, char **av) {
 	if (ac != 2) {
-		std::cerr << "Error: Not enough arguments." << std::endl << "Usage: ./RPN \"expression\"" << std::endl;
+		std::cerr << "Error: Not the good number of arguments." << std::endl << "Usage: ./RPN \"expression\"" << std::endl;
 		return (EXIT_FAILURE);
 	}
 
